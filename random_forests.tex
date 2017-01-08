@@ -290,8 +290,47 @@
 				\item Compute decrease in prediction accuracy
 			\end{enumerate}
 		\end{frame}
+		
+
+
+
+
+
+\section{Analysis}
+
+	\subsection{Random Forests and Overfitting}
 	
-	\subsection{Advantages}
+		\begin{frame}{Overfitting}
+			\begin{enumerate}
+				\item It was once (mistakenly) believed that random forests would not over fit
+				\item You \textit{can} overfit by growing deep trees
+				\item Growing too many trees won't cause you to overfit (but it's wasteful of computing resources)
+			\end{enumerate}
+		\end{frame}
+		
+		\begin{frame}{Tree Depth}
+			Tree depth can be controlled in two ways:
+			\vspace{5 mm}
+			\begin{enumerate}
+				\item{Set max number of terminal nodes (or interaction depth)}
+					\begin{itemize}
+						\item{\texttt{maxnodes} parameter in R}
+						\item In scikit-learn, \texttt{max\char`_depth} 
+					\end{itemize}
+				
+				\item{Specifying minimum number of observations in a node}
+					\begin{itemize}
+						\item{\texttt{nodesize} parameter in R}
+						\item{In scikit-learn,  \texttt{min\char`_samples\char`_split}}
+					\end{itemize}
+			\end{enumerate}
+		\end{frame}
+	
+	
+		
+\section{Conclusion}	
+	
+	\subsection{Advantages and Disadvantages}
 		\begin{frame}{Advantages of Random Forests}
 			\begin{enumerate}
 				\item Powerful prediction models
@@ -308,44 +347,41 @@
 			\end{enumerate}
 		\end{frame}
 
-		
-
-
-
-
-
-\section{Analysis}
-	\subsection{Random Forests and Overfitting}
-		\begin{frame}
+		\begin{frame}{Disadvantages of Random Forests}
 			\begin{enumerate}
-				\item It was once (mistakenly) believed that random forests would not over fit
-				\item It has since been shown that you \textit{can} overfit by growing deep trees
-				\item Growing too many trees won't cause you to overfit (but it's wasteful of computing resources)
+				\item Viewed as ``black box'' approach
+				\item Variable importance must be interpretted cautiously
+					\begin{itemize}
+						\item Less interpretable than parameter estimates in parametric models
+						\item Cannot meaningfully compare random forest to boosting 
+					\end{itemize}  
+				\item Trouble predicting severe outliers
+					\begin{itemize}
+						\item In regression, training data constrains the max (or min) $\hat{y}_i$ values 
+						\item In parametric models, the $\hat{y}_i$ values aren't bounded in this way
+					\end{itemize}
+				
+			\end{enumerate}
+		\end{frame}
+	
+	\subsection{Other Remarks}
+		\begin{frame}{Other Remarks}
+			\begin{enumerate}
+				\item In very noisy data, \texttt{mtry} parameter (in R) or \texttt{max\char`_features} (in scikit-learn) should be set higher
+				\item Often, boosting will tend to \textit{slightly} outperform random forests
+					\begin{itemize}
+						\item This is very case-specific, however
+						\item Boosting will tend to have the advantage in very noisy data
+					\end{itemize}
+				
 			\end{enumerate}
 		\end{frame}
 		
-		\begin{frame}
-			Tree depth can be controlled in two ways:  
-			\begin{enumerate}
-				\item Set maximum number of terminal nodes (or interaction depth) 
-					\begin{enumerate}[1]
-						\item Controlled by \texttt{maxnodes} parameter in R's \texttt{randomForest()} function
-						\item In scikit-learn, the \texttt{max_depth} parameter controls this
-					\end{enumerate}
-				\item Specifying minimum number of observations in a node 
-					\begin{enumerate}[1]
-						\item This is the \texttt{nodesize} parameter in R's \texttt{randomForest()} function
-						\item In scikit-learn, the \texttt{min_samples_split} controls this
-					\end{enumerate}
-			\end{enumerate}
-		\end{frame}
-		
-	\subsection{Conclusion}	
-		\begin{frame}{\hspace{3 mm}}
-			\begin{center}
+	\begin{frame}{\hspace{3 mm}}
+		\begin{center}
 			Thank you!
-			\end{center}
-		\end{frame} 
+		\end{center}
+	\end{frame} 
 		
 		
 		
