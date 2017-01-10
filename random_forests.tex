@@ -201,7 +201,7 @@
 						\item{\hspace{3 mm} Add $b^{th}$ tree to ensemble}
 					\end{enumerate}
 				\item{\textbf{end}}
-				\item Aggregate predictions for input $\textbf{X}$
+				\item Aggregate predictions for input $X$
 				}
 			\end{enumerate}
 		\end{frame}
@@ -239,15 +239,18 @@
 	\begin{frame}{Random Forest Pseudocode}
 		\begin{enumerate}[]
 			{\fontfamily{cmr}\selectfont
-			\item{\textbf{for} $b = 1:B$}
+			\item \textbf{for} $b = 1:B$
 				\begin{enumerate}[  ]
-					\item{\hspace{3 mm} Sample random $N$ records with replacement}
-					\item{\hspace{3 mm} Select $m$ predictors from complete set of $p$ predictors}
-					\item{\hspace{3 mm} Fit classification (or regression) tree, using only $m$ predictors}
-					\item{\hspace{3 mm} Add $b^{th}$ tree to ensemble}
+					\item \hspace{3 mm} Sample random $N$ records with replacement
+					\item \hspace{3 mm} Fit classification (or regression) tree
+					\begin{enumerate}[ ] 
+						\item \hspace{6 mm} At each node in tree, consider only $m$ predictors
+						\item \hspace{6 mm} Randomly select new subset of $m$ predictors at each node
+					\end{enumerate}
+					\item \hspace{3 mm} Add $b^{th}$ tree to ensemble
 				\end{enumerate}
-			\item{\textbf{end}}
-			\item{Aggregate predictions for input $\textbf{X}$}
+			\item \textbf{end}
+			\item Aggregate predictions for input $X$
 			}
 		\end{enumerate}
 	\end{frame}
