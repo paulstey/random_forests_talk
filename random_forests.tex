@@ -54,7 +54,7 @@
 		\begin{enumerate}[]
 			{\fontfamily{cmr}\selectfont
 						
-			\item $X$: matrix of predictors
+			%\item $X$: matrix of predictors
 			%\item $p$: number of columns in $X$
 			\item $l$: current minimum loss at a given node
 			\item $j^*$: index of column in $X$ that is current best predictor  
@@ -182,7 +182,7 @@
 			\hline
 			$3$ 	& $7$ 	& $5$  \\
 			$1$ 	& $1$ 	& $3$ \\
-			$9$	& $7$	& $1$ \\
+			$9$	& $7$	& $3$ \\
 			$5$ 	& $3$ 	& $9$ \\
 			$9$	& $1$	& $1$ \\
 			\hline
@@ -283,16 +283,24 @@
 		
 	\subsection{Variable Importance}
 		\begin{frame}{Variable Importance}
-			Variable importance computed using OOB samples:
-			
-			
-			\begin{enumerate} [  1.]
-				\item Fit $b^{th}$ tree
-				\item Record prediction accuracy for OOB samples (or MSE in regression)
-				\item Shuffle the $x_i$ in OOB samples
-				\item Compute decrease in prediction accuracy
+			Variable importance can be computed in a few different ways. 
+			\begin{enumerate}
+				\item Gini improvement 
+				\item OOB randomization
+					\begin{enumerate} [  1.]
+						\item Fit $b^{th}$ tree
+						\item Record prediction accuracy for OOB samples (or MSE in regression)
+						\item Shuffle the $x_i$ in OOB samples
+						\item Compute decrease in prediction accuracy
+					\end{enumerate} 
 			\end{enumerate}
 		\end{frame}
+		
+		\begin{frame}{Variable Importance}
+			\begin{figure}
+				\includegraphics[scale = 0.25]{variable_importance.png}
+			\end{figure}		
+    		\end{frame}
 		
 
 
@@ -376,6 +384,8 @@
 						\item This is very case-specific, however
 						\item Boosting will tend to have the advantage in very noisy data
 					\end{itemize}
+				\item Bias/Variance tradeoff in random forests vs. boosting
+				
 				
 			\end{enumerate}
 		\end{frame}
