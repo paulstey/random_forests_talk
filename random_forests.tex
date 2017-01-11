@@ -60,7 +60,8 @@
 			\item $j^*$: index of column in $X$ that is current best predictor  
 			
 			\vspace{5 mm}			
-			\item Pseudocode for \texttt{cart()} function:  
+			
+			%\item Pseudocode for \texttt{cart()} function:  
 			\vspace{3 mm}
 
 			\item{\textbf{while} number rows $>$ minimum-node-size}
@@ -338,11 +339,49 @@
 			\end{enumerate}
 		\end{frame}
 	
-	
+	\subsection{Noisy Data}
 		
-\section{Conclusion}	
+		\begin{frame}{Noisy Data}
+			\begin{enumerate}
+				\item In very noisy data, boosting will tend to outperform random forests
+				\item Due to random subset of predictors being used at each node
+					\begin{itemize}
+						\item Often, only noise variables may be selected as candidates for splitting
+					\end{itemize}
+				\item This effect is mitigated when:
+					\begin{itemize}
+						\item Number of non-noise variables increases even slightly
+						\item We set $m$ to be larger giving us a better chance of selecting non-noise variables 
+					\end{itemize}
+			\end{enumerate}
+		\end{frame}
+		
+		
+		\begin{frame}{Performance with Noisy Data}
+			\begin{figure}
+				\includegraphics[scale = 0.22]{test_error.png}
+			\end{figure}		
+    		\end{frame}
+		
+\section{Remarks and Conclusion}	
+				
+		\begin{frame}{Other Remarks}
+			\begin{enumerate}
+				
+				\item Often, boosting will tend to \textit{slightly} outperform random forests
+					\begin{itemize}
+						\item This is very case-specific, however
+						\item Boosting will tend to have the advantage in very noisy data
+					\end{itemize}
+				\item Bias/Variance tradeoff in random forests vs. boosting
+				
+				
+			\end{enumerate}
+		\end{frame}
+	
 	
 	\subsection{Advantages and Disadvantages}
+		
 		\begin{frame}{Advantages of Random Forests}
 			\begin{enumerate}
 				\item Powerful prediction models
@@ -376,44 +415,7 @@
 			\end{enumerate}
 		\end{frame}
 	
-	\subsection{Other Remarks}
-		
-		\begin{frame}{Noisy Data}
-			\begin{enumerate}
-				\item In very noisy data, boosting will tend to outperform random forests
-				\item Due to random subset of predictors being used at each node
-					\begin{itemize}
-						\item Often, only noise variables may be selected as candidates for splitting
-					\end{itemize}
-				\item This effect is mitigated when:
-					\begin{itemize}
-						\item Number of non-noise variables increases even slightly
-						\item We set $m$ to be larger giving us a better chance of selecting non-noise variables 
-					\end{itemize}
-			\end{enumerate}
-		\end{frame}
-		
-		
-		\begin{frame}{Performance with Noisy Data}
-			\begin{figure}
-				\includegraphics[scale = 0.1]{test_error.png}
-			\end{figure}		
-    		\end{frame}
 
-				
-		\begin{frame}{Other Remarks}
-			\begin{enumerate}
-				
-				\item Often, boosting will tend to \textit{slightly} outperform random forests
-					\begin{itemize}
-						\item This is very case-specific, however
-						\item Boosting will tend to have the advantage in very noisy data
-					\end{itemize}
-				\item Bias/Variance tradeoff in random forests vs. boosting
-				
-				
-			\end{enumerate}
-		\end{frame}
 		
 	\begin{frame}{\hspace{3 mm}}
 		\begin{center}
