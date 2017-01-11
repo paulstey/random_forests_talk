@@ -298,7 +298,7 @@
 		
 		\begin{frame}{Variable Importance}
 			\begin{figure}
-				\includegraphics[scale = 0.25]{variable_importance.png}
+				\includegraphics[scale = 0.2]{variable_importance.png}
 			\end{figure}		
     		\end{frame}
 		
@@ -316,6 +316,7 @@
 				\item It was once (mistakenly) believed that random forests would not over fit
 				\item You \textit{can} overfit by growing deep trees
 				\item Growing too many trees won't cause you to overfit (but it's wasteful of computing resources)
+				\item In general, people worry \textit{much} less about overfitting in random forests (relative to other approaches)
 			\end{enumerate}
 		\end{frame}
 		
@@ -376,9 +377,33 @@
 		\end{frame}
 	
 	\subsection{Other Remarks}
+		
+		\begin{frame}{Noisy Data}
+			\begin{enumerate}
+				\item In very noisy data, boosting will tend to outperform random forests
+				\item Due to random subset of predictors being used at each node
+					\begin{itemize}
+						\item Often, only noise variables may be selected as candidates for splitting
+					\end{itemize}
+				\item This effect is mitigated when:
+					\begin{itemize}
+						\item Number of non-noise variables increases even slightly
+						\item We set $m$ to be larger giving us a better chance of selecting non-noise variables 
+					\end{itemize}
+			\end{enumerate}
+		\end{frame}
+		
+		
+		\begin{frame}{Performance with Noisy Data}
+			\begin{figure}
+				\includegraphics[scale = 0.1]{test_error.png}
+			\end{figure}		
+    		\end{frame}
+
+				
 		\begin{frame}{Other Remarks}
 			\begin{enumerate}
-				\item In very noisy data, \texttt{mtry} parameter (in R) or \texttt{max\char`_features} (in scikit-learn) should be set higher
+				
 				\item Often, boosting will tend to \textit{slightly} outperform random forests
 					\begin{itemize}
 						\item This is very case-specific, however
